@@ -16,6 +16,16 @@ function App() {
     });
   }
 
+  function secondPanel(event) {
+    console.log(event.target.innerText);
+    setSecNumber((x) => {
+      if (x[0] === "0") {
+        x = "";
+      }
+      return x + event.target.innerText;
+    });
+  }
+
   return (
     <div className="calculator">
       <div className="panel">
@@ -47,25 +57,27 @@ function App() {
       </div>
 
       <div className="panel">
-        <p>0</p>
+        <p>{digit}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
+          <button onClick={secondPanel}>1</button>
+          <button onClick={secondPanel}>2</button>
+          <button onClick={secondPanel}>3</button>
+          <button onClick={secondPanel}>4</button>
+          <button onClick={secondPanel}>5</button>
+          <button onClick={secondPanel}>6</button>
+          <button onClick={secondPanel}>7</button>
+          <button onClick={secondPanel}>8</button>
+          <button onClick={secondPanel}>9</button>
+          <button onClick={secondPanel}>0</button>
+          <button onClick={() => setSecNumber((digit = 0))}>Clear</button>
+          <button onClick={secondPanel}>.</button>
         </div>
       </div>
       <div className="panel answer">
-        <p>0</p>
-        <div>
-          <button>=</button>
+        <p>{answer}</p>
+        <div className="numbers">
+          <button onClick={null}>Store</button>
+          <button onClick={null}>Recall</button>
         </div>
       </div>
     </div>
