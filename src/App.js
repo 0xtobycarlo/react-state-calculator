@@ -26,6 +26,27 @@ function App() {
     });
   }
 
+  function Calculate(event) {
+    return setOperator(event.target.innerText);
+  }
+
+  let operations = {
+    "+": function (a, b) {
+      return a + b;
+    },
+    "-": function (a, b) {
+      return a - b;
+    },
+    "*": function (a, b) {
+      return a * b;
+    },
+    "÷": function (a, b) {
+      return a / b;
+    },
+  };
+
+  let answer = operations[operator](Number(number), Number(digit));
+
   return (
     <div className="calculator">
       <div className="panel">
@@ -47,12 +68,12 @@ function App() {
       </div>
 
       <div className="panel">
-        <p>+</p>
+        <p>{operator}</p>
         <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
+          <button onClick={Calculate}>+</button>
+          <button onClick={Calculate}>-</button>
+          <button onClick={Calculate}>*</button>
+          <button onClick={Calculate}>÷</button>
         </div>
       </div>
 
